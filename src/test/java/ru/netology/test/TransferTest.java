@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class TransferTest {
     @Test
@@ -16,7 +17,7 @@ public class TransferTest {
         verificationPage.validVerify(verificationCode);
 
         DashboardPage dashboardPage = new DashboardPage();
-
+        sleep(3000);
         var idCard1 = DataHelper.getCardFirstId();
         var idCard2 = DataHelper.getCardSecondId();
 
@@ -40,7 +41,9 @@ public class TransferTest {
         replenishmentPage = dashboardPage.getReplenishmentPage(idCard2);
 
         replenishmentData = DataHelper.getTransferDataCard2ToCard1();
+
         dashboardPage = replenishmentPage.doTransfer(replenishmentData);
+        sleep(3000);
         balanceCard1After = dashboardPage.getCardBalance(idCard1);
         balanceCard2After = dashboardPage.getCardBalance(idCard2);
 
