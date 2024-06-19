@@ -50,9 +50,9 @@ public class DashboardPage {
     public ReplenishmentPage getReplenishmentPage(String id) {
 
         if (id.equals(DataHelper.getCardFirstId()))
-            $("[data-test-id=action-deposit]").click();
+            $("[data-test-id=action-deposit]").shouldBe(Condition.visible).click();
         else
-            $$("[data-test-id=action-deposit]").last().click();
+            $$("[data-test-id=action-deposit]").last().shouldBe(Condition.visible).click();
 
         // SelenideElement card = $("[data-test-id=" + id + "]");
         // SelenideElement btn = card.$("[data-test-id=action-deposit]");

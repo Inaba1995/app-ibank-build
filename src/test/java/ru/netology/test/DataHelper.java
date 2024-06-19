@@ -35,12 +35,10 @@ public class DataHelper {
     }
 
     public static String getCardSecondId(){
+
         return "0f3f5c2a-249e-4c3d-8287-09f7a039391d";
     }
 
-    public static int getCardBaseBalance(){
-        return 10000;
-    }
 
     @Value
     public static class ReplenishmentData{

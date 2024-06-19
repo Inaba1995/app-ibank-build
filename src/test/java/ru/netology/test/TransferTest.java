@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
-
 
 public class TransferTest {
     @Test
@@ -17,7 +15,6 @@ public class TransferTest {
         var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         verificationPage.validVerify(verificationCode);
 
-        var baseBalance = DataHelper.getCardBaseBalance();
         DashboardPage dashboardPage = new DashboardPage();
 
         var idCard1 = DataHelper.getCardFirstId();
