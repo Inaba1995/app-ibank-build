@@ -1,6 +1,8 @@
-package ru.netology.test;
+package ru.netology.test.page;
 
 import org.openqa.selenium.Keys;
+import ru.netology.test.data.DataHelper;
+import ru.netology.test.page.DashboardPage;
 
 import static com.codeborne.selenide.Selenide.$;
 

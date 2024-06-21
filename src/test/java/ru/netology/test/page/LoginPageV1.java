@@ -1,6 +1,6 @@
-package ru.netology.test;
+package ru.netology.test.page;
 
-import javax.xml.crypto.Data;
+import ru.netology.test.data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
 

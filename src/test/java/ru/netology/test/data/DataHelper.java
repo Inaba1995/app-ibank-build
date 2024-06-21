@@ -1,4 +1,4 @@
-package ru.netology.test;
+package ru.netology.test.data;
 
 
 import lombok.Value;

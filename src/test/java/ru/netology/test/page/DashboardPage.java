@@ -1,19 +1,14 @@
-package ru.netology.test;
+package ru.netology.test.page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import lombok.Data;
 import lombok.val;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import java.io.StringReader;
-import java.time.Duration;
+import ru.netology.test.data.DataHelper;
 
 import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class DashboardPage {
@@ -25,18 +20,10 @@ public class DashboardPage {
     public DashboardPage() {
     }
 
-
     public int getCardBalance(String id) {
         // TODO: перебрать все карты и найти по атрибуту data-test-id
-        String text = "";
-        for (SelenideElement card : cards) {
-            text = card.text();
-            String curr = card.getAttribute("data-test-id");
-            if (curr != null && curr.equals(id)) {
-                break;
-            }
-
-        }
+        SelenideElement card = cards.findBy(attribute("data-test-id", id)).shouldBe(Condition.visible);
+        String text = card.text();
         return extractBalance(text);
     }
 
@@ -47,18 +34,10 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-
     public ReplenishmentPage getReplenishmentPage(String id) {
-
-        if (id.equals(DataHelper.getCardFirstId()))
-            $("[data-test-id=action-deposit]").shouldBe(Condition.visible).click();
-        else
-            $$("[data-test-id=action-deposit]").last().shouldBe(Condition.visible).click();
-
-        // SelenideElement card = $("[data-test-id=" + id + "]");
-        // SelenideElement btn = card.$("[data-test-id=action-deposit]");
-        // btn.click();
-
+        SelenideElement card = cards.findBy(attribute("data-test-id", id)).shouldBe(Condition.visible);
+        SelenideElement btn = card.$("[data-test-id=action-deposit]");
+        btn.click();
         return new ReplenishmentPage();
 
     }
